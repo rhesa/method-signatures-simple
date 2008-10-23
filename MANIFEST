@@ -1,0 +1,15 @@
+Build.PL
+Changes
+lib/Method/Signatures/Simple.pm
+MANIFEST			This list of files
+META.yml
+README
+t/00-load.t
+t/01-parse-proto.t
+t/02-use.t
+t/boilerplate.t
+t/pod-coverage.t
+t/pod.t
+xt/lib/Devel/Declare/Context/Simple.pm
+xt/lib/Devel/Declare/MethodInstaller/Simple.pm
+Makefile.PL
