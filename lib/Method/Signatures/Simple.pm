@@ -3,7 +3,17 @@ package Method::Signatures::Simple;
 use warnings;
 use strict;
 
-our $VERSION = '0.01_01';
+our $VERSION = '0.02';
+
+=head1 NAME
+
+Method::Signatures::Simple - Basic method declarations with signatures, without source filters
+
+=head1 VERSION
+
+Version 0.02
+
+=cut
 
 use base q/Devel::Declare::MethodInstaller::Simple/;
 
@@ -34,14 +44,6 @@ sub parse_proto {
     return $inject;
 }
 
-
-=head1 NAME
-
-Method::Signatures::Simple - Basic method declarations with signatures, without source filters
-
-=head1 VERSION
-
-Version 0.01
 
 =head1 SYNOPSIS
 
