@@ -1,5 +1,9 @@
 Revision history for Method-Signatures-Simple
 
+0.03    2009-01-11  Rhesa Rozendaal <rhesa@cpan.org>
+        Converted dist-maint to Dist::Zilla.
+        Put the dist on github
+
 0.02    2008-10-25  Rhesa Rozendaal <rhesa@cpan.org>
         Bumped prereq of Devel::Declare
 
