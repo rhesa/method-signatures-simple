@@ -1,5 +1,8 @@
 Revision history for Method-Signatures-Simple
 
+0.04    2010-01-07  Rhesa Rozendaal <rhesa@cpan.org>
+        Added repository to META.yml. No code changes.
+
 0.03    2009-01-11  Rhesa Rozendaal <rhesa@cpan.org>
         Converted dist-maint to Dist::Zilla.
         Put the dist on github
