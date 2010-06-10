@@ -1,7 +1,13 @@
 Revision history for Method-Signatures-Simple
 
-0.04    2010-01-07  Rhesa Rozendaal <rhesa@cpan.org>
+0.06    2010-06-11  Rhesa Rozendaal <rhesa@cpan.org>
+        Documented the import arguments.
+
+0.05    2010-01-07  Rhesa Rozendaal <rhesa@cpan.org>
         Added repository to META.yml. No code changes.
+
+0.04    2010-01-07  Rhesa Rozendaal <rhesa@cpan.org>
+        Not released, dzil.ini cockup
 
 0.03    2009-01-11  Rhesa Rozendaal <rhesa@cpan.org>
         Converted dist-maint to Dist::Zilla.
