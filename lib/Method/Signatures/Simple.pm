@@ -14,12 +14,19 @@ use base q/Devel::Declare::MethodInstaller::Simple/;
 sub import {
     my $class = shift;
     my %opts  = @_;
-    $opts{into}     ||= caller;
-    $opts{invocant} ||= '$self';
+    $opts{into} ||= caller;
+    my $fname = delete $opts{fname} || 'func';
 
     $class->install_methodhandler(
-      name => 'method',
+      name     => 'method',
+      invocant => '$self',
       %opts,
+    );
+
+    $class->install_methodhandler(
+      name     => $fname,
+      %opts,
+      invocant => undef,
     );
 }
 
@@ -32,7 +39,7 @@ sub parse_proto {
 
     $invocant = $1 if $proto =~ s{^(\$\w+):\s*}{};
 
-    my $inject = "my ${invocant} = shift;";
+    my $inject = "my ${invocant} = shift;" if $invocant;
     $inject .= "my ($proto) = \@_;" if defined $proto and length $proto;
 
     return $inject;
@@ -75,18 +82,26 @@ the invocant with the first argument, followed by a colon:
     method ($this:) {}
     method ($this: $that) {}
 
+The C<func> keyword doesn't inject an invocant, but does do the signature processing below:
+
+    func ($that) {}
+
 =item * signature
 
 The signature C<($sig)> is transformed into C<"my ($sig) = \@_;">. That way, we mimic perl's usual
 argument handling.
 
     method foo ($bar, $baz, %opts) {
+    func xyzzy ($plugh, @zorkmid) {
 
     # becomes
 
     sub foo {
         my $self = shift;
         my ($bar, $baz, %opts) = @_;
+
+    sub xyzzy {
+        my ($plugh, @zorkmid) = @_;
 
 =back
 
@@ -106,15 +121,16 @@ keyword and the default invocant with import arguments. These changes affect the
     # and this of course still works:
     method z ($self:) { $self->{z} }
 
-=item * change the keyword
+=item * change the keywords
 
-You can install a different keyword (instead of the default 'method'), by passing a name to the
-C<use> line:
+You can install a different keyword (instead of the default 'method' and
+'func'), by passing names to the C<use> line:
 
-    use Method::Signatures::Simple name => 'action';
+    use Method::Signatures::Simple name => 'action', fname => 'thing';
     
     action foo ($some, $args) { ... }
-    
+    thing bar ($whatever) { ... }
+
 One benefit of this is that you can use this module together with e.g. L<MooseX::Declare>:
 
     # untested
