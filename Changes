@@ -1,5 +1,9 @@
 Revision history for Method-Signatures-Simple
 
+1.01    2011-08-31  Rhesa Rozendaal <rhesa@cpan.org>
+        Add func keyword for subs with signatures.
+        Thanks to Chip Salzenberg.
+
 0.06    2010-06-11  Rhesa Rozendaal <rhesa@cpan.org>
         Documented the import arguments.
 

@@ -286,6 +286,10 @@ For writing L<Method::Signatures> and publishing about it. This is what got my a
 
 For helping me abstracting the Devel::Declare bits and suggesting improvements.
 
+=item * CHIPS
+
+For suggesting we add a 'func' keyword.
+
 =back
 
 =head1 SEE ALSO
@@ -294,7 +298,7 @@ L<Devel::Declare>, L<Method::Signatures>, L<MooseX::Method::Signatures>.
 
 =head1 COPYRIGHT & LICENSE
 
-Copyright 2008 Rhesa Rozendaal, all rights reserved.
+Copyright 2011 Rhesa Rozendaal, all rights reserved.
 
 This program is free software; you can redistribute it and/or modify it
 under the same terms as Perl itself.
