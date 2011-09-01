@@ -1,5 +1,8 @@
 Revision history for Method-Signatures-Simple
 
+1.02    2011-09-01  Rhesa Rozendaal <rhesa@cpan.org>
+        Avoid uninitialized warning.
+
 1.01    2011-08-31  Rhesa Rozendaal <rhesa@cpan.org>
         Add func keyword for subs with signatures.
         Thanks to Chip Salzenberg.

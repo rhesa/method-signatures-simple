@@ -51,8 +51,9 @@ sub parse_proto {
 
     $invocant = $1 if $proto =~ s{^(\$\w+):\s*}{};
 
-    my $inject = "my ${invocant} = shift;" if $invocant;
-    $inject .= "my ($proto) = \@_;" if defined $proto and length $proto;
+    my $inject = '';
+    $inject .= "my ${invocant} = shift;" if $invocant;
+    $inject .= "my ($proto) = \@_;"      if defined $proto and length $proto;
 
     return $inject;
 }
