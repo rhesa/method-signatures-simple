@@ -46,6 +46,7 @@ sub parse_proto {
     my $self = shift;
     my ($proto) = @_;
     $proto ||= '';
+    $proto =~ s/#.*$//mg;
     $proto =~ s/[\r\n]//g;
     $proto =~ s/^\s+//g;
     $proto =~ s/\s+$//g;
