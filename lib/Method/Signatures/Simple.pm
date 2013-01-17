@@ -47,9 +47,11 @@ sub parse_proto {
     my ($proto) = @_;
     $proto ||= '';
     $proto =~ s/[\r\n]//g;
+    $proto =~ s/^\s+//g;
+    $proto =~ s/\s+$//g;
     my $invocant = $self->{invocant};
 
-    $invocant = $1 if $proto =~ s{^(\$\w+):\s*}{};
+    $invocant = $1 if $proto =~ s{^(\$\w+)\s*:\s*}{};
 
     my $inject = '';
     $inject .= "my ${invocant} = shift;" if $invocant;
