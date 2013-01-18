@@ -60,7 +60,7 @@ sub strip_attrs {
     my $self = shift;
     my ($attrs) = $self->SUPER::strip_attrs();
     $attrs ||= '';
-    $attrs .= $/ x $self->{__nls};
+    $attrs .= $/ x $self->{__nls} if $self->{__nls};
     $attrs;
 }
 
