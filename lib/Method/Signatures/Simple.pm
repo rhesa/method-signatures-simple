@@ -9,7 +9,7 @@ Method::Signatures::Simple - Basic method declarations with signatures, without 
 
 =cut
 
-use base q/Devel::Declare::MethodInstaller::Simple/;
+use base 'Devel::Declare::MethodInstaller::Simple';
 
 sub import {
     my $class = shift;
@@ -42,17 +42,39 @@ sub import {
     }
 }
 
+sub strip_proto {
+    my $self = shift;
+    my ($proto) = $self->SUPER::strip_proto()
+      or return '';
+    # we strip comments and newlines here, and stash the number of newlines.
+    # we will re-inject the newlines in strip_attrs(), because DD does not
+    # like it when you inject them into the following code block. it does not
+    # object to tacking on newlines to the code attribute spec though.
+    # (see the call to inject_if_block() in DD::MethodInstaller::Simple->parser)
+    $proto =~ s/\s*#.*$//mg;
+    $self->{__nls} = $proto =~ s/[\r\n]//g;
+    $proto;
+}
+
+sub strip_attrs {
+    my $self = shift;
+    my ($attrs) = $self->SUPER::strip_attrs();
+    $attrs ||= '';
+    $attrs .= $/ x $self->{__nls};
+    $attrs;
+}
+
 sub parse_proto {
     my $self = shift;
     my ($proto) = @_;
     $proto ||= '';
-    $proto =~ s/#.*$//mg;
+    $proto =~ s/\s*#.*$//mg;
+    $proto =~ s/^\s+//mg;
+    $proto =~ s/\s+$//mg;
     $proto =~ s/[\r\n]//g;
-    $proto =~ s/^\s+//g;
-    $proto =~ s/\s+$//g;
     my $invocant = $self->{invocant};
 
-    $invocant = $1 if $proto =~ s{^(\$\w+)\s*:\s*}{};
+    $invocant = $1 if $proto =~ s{(\$\w+)\s*:\s*}{};
 
     my $inject = '';
     $inject .= "my ${invocant} = shift;" if $invocant;

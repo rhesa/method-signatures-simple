@@ -13,7 +13,7 @@ my @tests = (
     ['$class: %opts'  => [ qr'my \$class = shift;', qr'my \(\%opts\) = \@_;'        ]],
     ['@stuff'         => [ qr'my \$self = shift;',  qr'my \(\@stuff\) = \@_;'       ]],
     ['$foo, $bar'     => [ qr'my \$self = shift;',  qr'my \(\$foo, \$bar\) = \@_;'  ]],
-    ["$/foo, $/bar$/" => [ qr'my \$self = shift;',  qr'my \(foo, bar\) = \@_;'      ]],
+    ["$/foo, $/bar$/" => [ qr'my \$self = shift;',  qr'my \(foo,bar\) = \@_;'       ]],
 );
 
 for my $t (@tests) {
