@@ -1,5 +1,8 @@
 Revision history for Method-Signatures-Simple
 
+1.07    2013-01-20  Rhesa Rozendaal <rhesa@cpan.org>
+        Fix RT80510: empty methods returning @_
+
 1.06    2013-01-20  Rhesa Rozendaal <rhesa@cpan.org>
         Fix a test so it passes on 5.10
 

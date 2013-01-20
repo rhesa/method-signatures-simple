@@ -79,6 +79,7 @@ sub parse_proto {
     my $inject = '';
     $inject .= "my ${invocant} = shift;" if $invocant;
     $inject .= "my ($proto) = \@_;"      if defined $proto and length $proto;
+    $inject .= '();'; # fix for empty method body
 
     return $inject;
 }
