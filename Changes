@@ -1,5 +1,8 @@
 Revision history for Method-Signatures-Simple
 
+1.06    2013-01-20  Rhesa Rozendaal <rhesa@cpan.org>
+        Fix a test so it passes on 5.10
+
 1.05    2013-01-18  Rhesa Rozendaal <rhesa@cpan.org>
         Fix RT80507: keep perl's idea of line number
         intact when mangling multi-line signatures
