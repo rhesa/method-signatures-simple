@@ -254,6 +254,14 @@ semantics as 'method' into the current scope:
 
 Overridden.
 
+=item strip_attrs
+
+Overridden.
+
+=item strip_proto
+
+Overridden.
+
 =back
 
 =end pod-coverage
